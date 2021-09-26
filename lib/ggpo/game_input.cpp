@@ -7,7 +7,7 @@
 
 #include "game_input.h"
 
-#include "ggpo_types.h"
+#include "types.h"
 #include "log.h"
 
 void

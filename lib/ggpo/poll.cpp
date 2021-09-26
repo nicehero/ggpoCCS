@@ -5,8 +5,8 @@
  * in the LICENSE file.
  */
 
-#include "ggpo_poll.h"
-#include "ggpo_types.h"
+#include "poll.h"
+#include "types.h"
 
 #ifndef _WIN32
 #include <chrono>

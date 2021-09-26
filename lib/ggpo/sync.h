@@ -10,7 +10,7 @@
 
 #include "ggponet.h"
 #include "game_input.h"
-#include "ggpo_types.h"
+#include "types.h"
 #include "input_queue.h"
 #include "ring_buffer.h"
 #include "network/udp_msg.h"

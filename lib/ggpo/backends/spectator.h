@@ -8,12 +8,12 @@
 #ifndef _SPECTATOR_H
 #define _SPECTATOR_H
 
-#include "../ggpo_poll.h"
-#include "../ggpo_types.h"
-#include "sync.h"
+#include "../poll.h"
+#include "../types.h"
+#include "../sync.h"
 #include "backend.h"
-#include "timesync.h"
-#include "network/udp_proto.h"
+#include "../timesync.h"
+#include "../network/udp_proto.h"
 
 #define SPECTATOR_FRAME_BUFFER_SIZE    64
 

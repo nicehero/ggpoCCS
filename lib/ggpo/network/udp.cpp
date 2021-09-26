@@ -5,7 +5,7 @@
  * in the LICENSE file.
  */
 
-#include "ggpo_types.h"
+#include "../types.h"
 #include "udp.h"
 
 SOCKET

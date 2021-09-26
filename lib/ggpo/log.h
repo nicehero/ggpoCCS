@@ -8,6 +8,8 @@
 #ifndef _LOG_H
 #define _LOG_H
 
+#include <cstdio>
+
 extern void Log(const char *fmt, ...);
 extern void Logv(const char *fmt, va_list list);
 

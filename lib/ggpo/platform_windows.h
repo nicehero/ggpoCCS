@@ -13,7 +13,7 @@
 #include <windows.h>
 #include <stdio.h>
 
-#include "ggpo_types.h"
+#include "types.h"
 
 class Platform {
 public:  // types

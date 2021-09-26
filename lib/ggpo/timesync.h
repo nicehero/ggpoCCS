@@ -9,7 +9,7 @@
 #define _TIMESYNC_H
 
 #include "game_input.h"
-#include "ggpo_types.h"
+#include "types.h"
 
 #define FRAME_WINDOW_SIZE           40
 #define MIN_UNIQUE_FRAMES           10

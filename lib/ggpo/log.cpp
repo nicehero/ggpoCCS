@@ -5,10 +5,18 @@
  * in the LICENSE file.
  */
 
-#include "ggpo_types.h"
-#include "log/Log.h"
-#include "log/LogManager.h"
-#include <string>
+#include "types.h"
+
+static FILE *logfile = NULL;
+
+void LogFlush()
+{
+   if (logfile) {
+      fflush(logfile);
+   }
+}
+
+static char logbuf[4 * 1024 * 1024];
 
 void Log(const char *fmt, ...)
 {
@@ -18,14 +26,8 @@ void Log(const char *fmt, ...)
    va_end(args);
 }
 
-void Logv(const char* fmt, va_list args)
+void Logv(const char *fmt, va_list args)
 {
-	std::string copy;
-	if (fmt[strlen(fmt) - 1] == '\n') {
-		copy = fmt;
-		copy.pop_back();
-		fmt = copy.c_str();
-	}
-	if (LogManager::GetInstance())
-		LogManager::GetInstance()->Log(LogTypes::LDEBUG, LogTypes::NETWORK, __FILE__, __LINE__, fmt, args);
+   vfprintf(stdout, fmt, args);
+   fflush(stdout);
 }

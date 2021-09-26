@@ -8,7 +8,7 @@
 #ifndef _BACKEND_H
 #define _BACKEND_H
 
-#include "../ggpo_types.h"
+#include "../types.h"
 #include "ggponet.h"
 
 struct GGPOSession {

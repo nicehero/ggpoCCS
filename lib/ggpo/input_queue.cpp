@@ -6,7 +6,7 @@
  */
 
 #include "input_queue.h"
-#include "ggpo_types.h"
+#include "types.h"
 
 #define PREVIOUS_FRAME(offset)   (((offset) == 0) ? (INPUT_QUEUE_LENGTH - 1) : ((offset) - 1))
 

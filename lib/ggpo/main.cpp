@@ -8,7 +8,7 @@
 #include "backends/p2p.h"
 #include "backends/synctest.h"
 #include "backends/spectator.h"
-#include "ggpo_types.h"
+#include "types.h"
 #include "ggponet.h"
 
 struct Init
