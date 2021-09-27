@@ -328,6 +328,8 @@ UdpProtocol::OnMsg(UdpMsg *msg, int len)
          LogMsg("recv rejecting", msg);
          return;
       }
+      if(msg->hdr.type == UdpMsg::Invalid)
+         return;
 
       // filter out out-of-order packets
       uint16 skipped = (uint16)((int)seq - (int)_next_recv_seq);
