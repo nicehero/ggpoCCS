@@ -28,6 +28,6 @@ void Log(const char *fmt, ...)
 
 void Logv(const char *fmt, va_list args)
 {
-   vfprintf(stdout, fmt, args);
-   fflush(stdout);
+/*    vfprintf(stdout, fmt, args);
+   fflush(stdout); */
 }

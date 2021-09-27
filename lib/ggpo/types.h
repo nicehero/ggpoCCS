@@ -20,8 +20,8 @@
  *   4201 - nonstandard extension used : nameless struct/union
  *   4389 - '!=' : signed/unsigned mismatch
  *   4800 - 'int' : forcing value to bool 'true' or 'false' (performance warning)
- */
-#pragma warning(disable: 4018 4100 4127 4201 4389 4800)
+ 
+#pragma warning(disable: 4018 4100 4127 4201 4389 4800)*/
 #endif
 
 /*
@@ -37,6 +37,7 @@ typedef int int32;
 
 #include "ggponet.h"
 #include <stdexcept>
+#include <cassert>
 
 class GGPOException : public std::runtime_error {
 public:
@@ -62,19 +63,7 @@ public:
 /*
  * Macros
  */
-#define ASSERT(x)                                           \
-   do {                                                     \
-      if (!(x)) {                                           \
-         char assert_buf[1024];                             \
-         snprintf(assert_buf, sizeof(assert_buf) - 1, "Assertion: %s @ %s:%d (pid:%ld)", #x, __FILE__, __LINE__, (long)Platform::GetProcessID()); \
-         Log("%s\n", assert_buf);                           \
-         Log("\n");                                         \
-         Log("\n");                                         \
-         Log("\n");                                         \
-         Platform::AssertFailed(assert_buf);                \
-         exit(0);                                           \
-      }                                                     \
-   } while (false)
+#define ASSERT(x) assert(x)
 
 #ifndef ARRAY_SIZE
 #  define ARRAY_SIZE(a)    (sizeof(a) / sizeof((a)[0]))

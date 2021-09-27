@@ -448,7 +448,8 @@ UdpProtocol::LogMsg(const char *prefix, UdpMsg *msg)
       Log("%s input ack.\n", prefix);
       break;
    default:
-      ASSERT(false && "Unknown UdpMsg type.");
+      break;
+      //ASSERT(false && "Unknown UdpMsg type.");
    }
 }
 

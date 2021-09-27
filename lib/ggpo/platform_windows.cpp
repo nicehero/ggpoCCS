@@ -6,6 +6,7 @@
  */
 #ifdef _WIN32
 #include "platform_windows.h"
+#include "types.h"
 
 int
 Platform::GetConfigInt(const char* name)
