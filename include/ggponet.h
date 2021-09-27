@@ -8,10 +8,7 @@
 #ifndef _GGPONET_H_
 #define _GGPONET_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
+#include <functional>
 #include <stdarg.h>
 
 // On windows, export at build time and import at runtime.
@@ -217,7 +214,7 @@ typedef struct {
     * length into the *len parameter.  Optionally, the client can compute
     * a checksum of the data and store it in the *checksum argument.
     */
-   bool (__cdecl *save_game_state)(unsigned char **buffer, int *len, int *checksum, int frame);
+   std::function<bool(unsigned char **, int *, int *, int)> save_game_state;
 
    /*
     * load_game_state - GGPO.net will call this function at the beginning
@@ -226,14 +223,14 @@ typedef struct {
     * should make the current game state match the state contained in the
     * buffer.
     */
-   bool (__cdecl *load_game_state)(unsigned char *buffer, int len);
+   std::function<bool(unsigned char*, int)> load_game_state;
 
    /*
     * log_game_state - Used in diagnostic testing.  The client should use
     * the ggpo_log function to write the contents of the specified save
     * state in a human readible form.
     */
-   bool (__cdecl *log_game_state)(char *filename, unsigned char *buffer, int len);
+    bool (__cdecl *log_game_state)(char *filename, unsigned char *buffer, int len);
 
    /*
     * free_buffer - Frees a game state allocated in save_game_state.  You
@@ -250,13 +247,13 @@ typedef struct {
     *
     * The flags parameter is reserved.  It can safely be ignored at this time.
     */
-   bool (__cdecl *advance_frame)(int flags);
+   std::function<bool(int)> advance_frame;
 
    /* 
     * on_event - Notification that something has happened.  See the GGPOEventCode
     * structure above for more information.
     */
-   bool (__cdecl *on_event)(GGPOEvent *info);
+   std::function<bool(GGPOEvent *info)> on_event;
 } GGPOSessionCallbacks;
 
 /*
@@ -337,7 +334,7 @@ GGPO_API GGPOErrorCode __cdecl ggpo_start_session(GGPOSession **session,
                                                   const char *game,
                                                   int num_players,
                                                   int input_size,
-                                                  unsigned short localport);
+                                                  uint64_t socket);
 
 
 /*
@@ -573,8 +570,5 @@ GGPO_API void __cdecl ggpo_logv(GGPOSession *,
                                 const char *fmt,
                                 va_list args);
 
-#ifdef __cplusplus
-};
-#endif
 
 #endif

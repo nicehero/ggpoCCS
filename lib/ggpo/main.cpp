@@ -45,7 +45,7 @@ ggpo_start_session(GGPOSession **session,
                    const char *game,
                    int num_players,
                    int input_size,
-                   unsigned short localport)
+                   uint64_t localport)
 {
 	try {
 	   *session= (GGPOSession *)new Peer2PeerBackend(cb,
