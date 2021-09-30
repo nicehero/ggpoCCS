@@ -8,6 +8,7 @@
 #ifndef _GGPONET_H_
 #define _GGPONET_H_
 
+#include <stdint.h>
 #include <functional>
 #include <stdarg.h>
 
