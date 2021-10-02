@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 # TODO: SDK Versioning.
 project(GGPO VERSION 1.0.0)
-add_library(ggpo STATIC)
+add_library(ggpo SHARED)
 
 set(GGPO_LIB_INC_NOFILTER
 	"lib/ggpo/bitvector.h"
