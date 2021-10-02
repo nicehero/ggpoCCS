@@ -19,5 +19,6 @@ Android
 #### 使用说明
 
   先看ggpo自己的例子vectorwar:https://github.com/pond3r/ggpo
-  主要就是，设置好多少player，设置好状态机保存，状态机加载，状态机下一帧等回调函数给ggpoSession，然后正常跑状态机即可
+
+  大概就是设置好多少player，设置好状态机保存，状态机加载，状态机下一帧等回调函数给ggpoSession并创建，然后正常跑状态机即可
 
