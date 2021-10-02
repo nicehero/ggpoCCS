@@ -2,7 +2,9 @@
 
 #### 介绍
 ggpo功能参见https://ggpo.net
+
 跨平台ggpo支持分支，主要使其支持移动平台
+
 并准备制作成一个支持ClientServer版本
 
 #### 安装教程
