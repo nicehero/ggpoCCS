@@ -15,7 +15,7 @@ static const int DEFAULT_DISCONNECT_NOTIFY_START   = 750;
 
 Peer2PeerBackend::Peer2PeerBackend(GGPOSessionCallbacks *cb,
                                    const char *gamename,
-                                   uint64_t socket,
+                                   unsigned short localport,
                                    int num_players,
                                    int input_size) :
     _num_players(num_players),
@@ -43,7 +43,7 @@ Peer2PeerBackend::Peer2PeerBackend(GGPOSessionCallbacks *cb,
    /*
     * Initialize the UDP port
     */
-   _udp.Init(socket, &_poll, this);
+   _udp.Init(localport, &_poll, this);
 
    _endpoints = new UdpProtocol[_num_players];
    memset(_local_connect_status, 0, sizeof(_local_connect_status));

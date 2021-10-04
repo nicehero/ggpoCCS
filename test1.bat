@@ -1,0 +1,1 @@
+VectorWar.exe 9999 2 local 127.0.0.1:9998
