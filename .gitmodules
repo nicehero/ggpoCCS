@@ -1,0 +1,3 @@
+[submodule "nicenet"]
+	path = nicenet
+	url = https://gitee.com/nicehero/nicenet

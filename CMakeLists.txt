@@ -90,6 +90,7 @@ endif()
 
 target_include_directories(ggpo PUBLIC
 	"include"
+	"nicenet"
 )
 message(${PROJECT_BINARY_DIR})
 message(${PROJECT_SOURCE_DIR})
