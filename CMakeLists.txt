@@ -98,6 +98,10 @@ if(WIN32)
 	target_link_libraries(ggpo PUBLIC winmm.lib ws2_32.lib nicenet stdc++)
 endif()
 
+if(ANDROID)
+	target_link_libraries(ggpo PUBLIC nicenet stdc++)
+endif()
+
 target_include_directories(ggpo PUBLIC
 	"include"
 	"nicenet"
