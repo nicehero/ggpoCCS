@@ -41,7 +41,7 @@
 #define GGPO_MAX_SPECTATORS              32
 
 #define GGPO_SPECTATOR_INPUT_INTERVAL     4
-
+#define GGPO_CS_MESSAGE_ID					48888
 typedef struct GGPOSession GGPOSession;
 
 typedef int GGPOPlayerHandle;
@@ -88,6 +88,9 @@ typedef struct GGPOPlayer {
          char           ip_address[32];
          unsigned short port;
       } remote;
+      struct {
+         char           playerID[32];
+      } csremote;
    } u;
 } GGPOPlayer;
 
@@ -111,7 +114,8 @@ typedef struct GGPOLocalEndpoint {
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_PLAYER_DISCONNECTED,    9)    \
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_TOO_MANY_SPECTATORS,   10)    \
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_INVALID_REQUEST,       11)    \
-   GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_INPUT_SIZE_DIFF,       12)
+   GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_INPUT_SIZE_DIFF,       12)	 \
+   GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_CS_FIFO_FULL,          13)    
 
 #define GGPO_ERRORLIST_ENTRY(name, value)       name = value,
 typedef enum {
@@ -339,6 +343,42 @@ GGPO_API GGPOErrorCode __cdecl ggpo_start_session(GGPOSession **session,
 
 
 /*
+ * ggpo_start_cssession --
+ *
+ * Used to being a new GGPO.net session by cs mode.  The ggpo object returned by ggpo_start_cssession
+ * uniquely identifies the state for this session and should be passed to all other
+ * functions.
+ *
+ * session - An out parameter to the new ggpo session object.
+ *
+ * cb - A GGPOSessionCallbacks structure which contains the callbacks you implement
+ * to help GGPO.net synchronize the two games.  You must implement all functions in
+ * cb, even if they do nothing but 'return true';
+ *
+ * game - The name of the game.  This is used internally for GGPO for logging purposes only.
+ * num_players - The number of players which will be in this game.  The number of players
+ * per session is fixed.  If you need to change the number of players or any player
+ * disconnects, you must start a new session.
+ *
+ * input_size - The size of the game inputs which will be passsed to ggpo_add_local_input.
+ *
+ * room - Create or join a server game room
+ * playerID - local player unique ID
+ * serverIP - serverIP
+ * serverPort - serverPort
+ */
+
+GGPO_API GGPOErrorCode __cdecl ggpo_start_cssession(GGPOSession **session,
+													   GGPOSessionCallbacks *cb,
+													   const char *game,
+													   int num_players,
+													   int input_size,
+													   const char* room,
+													   const char* playerID,
+													   const char* serverIP,
+													   unsigned short serverPort);
+
+/*
  * ggpo_add_player --
  *
  * Must be called for each player in the session (e.g. in a 3 player session, must
@@ -418,6 +458,8 @@ GGPO_API GGPOErrorCode __cdecl ggpo_start_spectating(GGPOSession **session,
                                                      unsigned short local_port,
                                                      char *host_ip,
                                                      unsigned short host_port);
+													 
+
 
 /*
  * ggpo_close_session --

@@ -100,6 +100,7 @@ public:
    }
 
    UdpMsg(MsgType t) { hdr.type = (uint8)t; }
+   UdpMsg() { hdr.type = (uint8)0; }
 };
 
 #pragma pack(pop)

@@ -8,6 +8,7 @@
 #include "backends/p2p.h"
 #include "backends/synctest.h"
 #include "backends/spectator.h"
+#include "backends/csbackend.h"
 #include "types.h"
 #include "ggponet.h"
 
@@ -269,3 +270,22 @@ GGPOErrorCode ggpo_start_spectating(GGPOSession **session,
 	}
 }
 
+GGPOErrorCode
+ggpo_start_cssession(GGPOSession **session,
+                   GGPOSessionCallbacks *cb,
+                   const char *game,
+                   int num_players,
+                   int input_size,
+                   const char* room,
+                   const char* playerID,
+				   const char* serverIP,
+				   unsigned short serverPort)
+{
+	try {
+	   *session= (GGPOSession *)new CSBackend(cb,game,room,playerID,serverIP,serverPort,num_players,input_size);
+	   return GGPO_OK;
+	} catch (const GGPOException& e) {
+	   Log("GGPOException in ggpo_start_session: %s", e.what());
+	   return e.ggpoError;
+	}
+}
