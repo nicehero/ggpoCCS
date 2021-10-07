@@ -2,6 +2,12 @@ cmake_minimum_required(VERSION 3.14)
 
 # TODO: SDK Versioning.
 project(GGPO VERSION 1.0.0)
+
+LINK_DIRECTORIES(
+	${PROJECT_SOURCE_DIR}
+	)
+
+
 add_library(ggpo SHARED)
 
 set(GGPO_LIB_INC_NOFILTER
@@ -50,16 +56,20 @@ set(GGPO_LIB_INC_NETWORK
 set(GGPO_LIB_SRC_NETWORK
 	"lib/ggpo/network/udp.cpp"
 	"lib/ggpo/network/udp_proto.cpp"
+	"lib/ggpo/network/cs.cpp"
+	"lib/ggpo/network/cs_proto.cpp"
 )
 
 set(GGPO_LIB_INC_BACKENDS
 	"lib/ggpo/backends/backend.h"
+	"lib/ggpo/backends/csbackend.h"
 	"lib/ggpo/backends/p2p.h"
 	"lib/ggpo/backends/spectator.h"
 	"lib/ggpo/backends/synctest.h"
 )
 
 set(GGPO_LIB_SRC_BACKENDS
+	"lib/ggpo/backends/csbackend.cpp"
 	"lib/ggpo/backends/p2p.cpp"
 	"lib/ggpo/backends/spectator.cpp"
 	"lib/ggpo/backends/synctest.cpp"
@@ -85,12 +95,13 @@ target_sources(ggpo PRIVATE
 )
 
 if(WIN32)
-	target_link_libraries(ggpo PUBLIC winmm.lib ws2_32.lib)
+	target_link_libraries(ggpo PUBLIC winmm.lib ws2_32.lib nicenet stdc++)
 endif()
 
 target_include_directories(ggpo PUBLIC
 	"include"
 	"nicenet"
+	"./"
 )
 message(${PROJECT_BINARY_DIR})
 message(${PROJECT_SOURCE_DIR})

@@ -9,6 +9,10 @@
 #include "cs.h"
 #include <nicenet/Service.h>
 
+void GGPOCSClient::close()
+{
+	TcpSessionC::close();
+}
 
 CS::CS() :
    _callbacks(NULL),

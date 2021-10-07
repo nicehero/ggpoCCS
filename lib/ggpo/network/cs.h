@@ -42,7 +42,7 @@ class CS;
 class GGPOCSClient :public nicehero::TcpSessionC
 {
 public:
-	void close();
+	virtual void close();
 	CS* m_parent;
 };
 class CS : public IPollSink
