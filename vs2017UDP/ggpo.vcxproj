@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{8BF339A8-2267-437F-87EE-24DD8DB98D43}</ProjectGuid>
+    <RootNamespace>ggpo</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>ggpoUDP</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../include;../;../nicenet/dep/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;ASIO_STANDALONE;MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>WS2_32.lib;WinMM.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../include;../;../nicenet/dep/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;ASIO_STANDALONE;MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>WS2_32.lib;WinMM.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lib\ggpo\backends\backend.h" />
+    <ClInclude Include="..\lib\ggpo\backends\csbackend.h" />
+    <ClInclude Include="..\lib\ggpo\backends\p2p.h" />
+    <ClInclude Include="..\lib\ggpo\backends\spectator.h" />
+    <ClInclude Include="..\lib\ggpo\backends\synctest.h" />
+    <ClInclude Include="..\lib\ggpo\bitvector.h" />
+    <ClInclude Include="..\lib\ggpo\game_input.h" />
+    <ClInclude Include="..\lib\ggpo\ggpolog.h" />
+    <ClInclude Include="..\lib\ggpo\input_queue.h" />
+    <ClInclude Include="..\lib\ggpo\log.h" />
+    <ClInclude Include="..\lib\ggpo\network\cs.h" />
+    <ClInclude Include="..\lib\ggpo\network\cs_proto.h" />
+    <ClInclude Include="..\lib\ggpo\network\udp.h" />
+    <ClInclude Include="..\lib\ggpo\network\udp_msg.h" />
+    <ClInclude Include="..\lib\ggpo\network\udp_proto.h" />
+    <ClInclude Include="..\lib\ggpo\platform_linux.h" />
+    <ClInclude Include="..\lib\ggpo\platform_windows.h" />
+    <ClInclude Include="..\lib\ggpo\poll.h" />
+    <ClInclude Include="..\lib\ggpo\ring_buffer.h" />
+    <ClInclude Include="..\lib\ggpo\static_buffer.h" />
+    <ClInclude Include="..\lib\ggpo\sync.h" />
+    <ClInclude Include="..\lib\ggpo\timesync.h" />
+    <ClInclude Include="..\lib\ggpo\types.h" />
+    <ClInclude Include="..\nicenet\Clock.h" />
+    <ClInclude Include="..\nicenet\Common.hpp" />
+    <ClInclude Include="..\nicenet\CopyablePtr.hpp" />
+    <ClInclude Include="..\nicenet\HttpParser.hpp" />
+    <ClInclude Include="..\nicenet\HttpServer.h" />
+    <ClInclude Include="..\nicenet\Kcp.h" />
+    <ClInclude Include="..\nicenet\Log.h" />
+    <ClInclude Include="..\nicenet\Message.h" />
+    <ClInclude Include="..\nicenet\Module.h" />
+    <ClInclude Include="..\nicenet\NoCopy.h" />
+    <ClInclude Include="..\nicenet\Server.h" />
+    <ClInclude Include="..\nicenet\Service.h" />
+    <ClInclude Include="..\nicenet\Tcp.h" />
+    <ClInclude Include="..\vectorwar\gamestate.h" />
+    <ClInclude Include="..\vectorwar\gdi_renderer.h" />
+    <ClInclude Include="..\vectorwar\ggpo_perfmon.h" />
+    <ClInclude Include="..\vectorwar\nongamestate.h" />
+    <ClInclude Include="..\vectorwar\renderer.h" />
+    <ClInclude Include="..\vectorwar\Resource.h" />
+    <ClInclude Include="..\vectorwar\targetver.h" />
+    <ClInclude Include="..\vectorwar\vectorwar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\lib\ggpo\backends\csbackend.cpp" />
+    <ClCompile Include="..\lib\ggpo\backends\p2p.cpp" />
+    <ClCompile Include="..\lib\ggpo\backends\spectator.cpp" />
+    <ClCompile Include="..\lib\ggpo\backends\synctest.cpp" />
+    <ClCompile Include="..\lib\ggpo\bitvector.cpp" />
+    <ClCompile Include="..\lib\ggpo\game_input.cpp" />
+    <ClCompile Include="..\lib\ggpo\ggpo.cpp" />
+    <ClCompile Include="..\lib\ggpo\ggpolog.cpp" />
+    <ClCompile Include="..\lib\ggpo\input_queue.cpp" />
+    <ClCompile Include="..\lib\ggpo\network\cs.cpp" />
+    <ClCompile Include="..\lib\ggpo\network\cs_proto.cpp" />
+    <ClCompile Include="..\lib\ggpo\network\udp.cpp" />
+    <ClCompile Include="..\lib\ggpo\network\udp_proto.cpp" />
+    <ClCompile Include="..\lib\ggpo\platform_linux.cpp" />
+    <ClCompile Include="..\lib\ggpo\platform_windows.cpp" />
+    <ClCompile Include="..\lib\ggpo\poll.cpp" />
+    <ClCompile Include="..\lib\ggpo\sync.cpp" />
+    <ClCompile Include="..\lib\ggpo\timesync.cpp" />
+    <ClCompile Include="..\nicenet\Clock.cpp" />
+    <ClCompile Include="..\nicenet\dep\include\kcp\ikcp.c" />
+    <ClCompile Include="..\nicenet\dep\include\micro-ecc\uECC.c" />
+    <ClCompile Include="..\nicenet\dep\include\tiny_sha3\sha3.c" />
+    <ClCompile Include="..\nicenet\HttpServer.cpp" />
+    <ClCompile Include="..\nicenet\Kcp.cpp" />
+    <ClCompile Include="..\nicenet\Log.cpp" />
+    <ClCompile Include="..\nicenet\Server.cpp" />
+    <ClCompile Include="..\nicenet\Service.cpp" />
+    <ClCompile Include="..\nicenet\Tcp.cpp" />
+    <ClCompile Include="..\vectorwar\gamestate.cpp" />
+    <ClCompile Include="..\vectorwar\gdi_renderer.cpp" />
+    <ClCompile Include="..\vectorwar\ggpo_perfmon.cpp" />
+    <ClCompile Include="..\vectorwar\main.cpp" />
+    <ClCompile Include="..\vectorwar\vectorwar.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\vectorwar\small.ico" />
+    <Image Include="..\vectorwar\VectorWar.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

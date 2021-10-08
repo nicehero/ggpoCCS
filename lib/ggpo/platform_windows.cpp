@@ -12,7 +12,7 @@ int
 Platform::GetConfigInt(const char* name)
 {
    char buf[1024];
-   if (GetEnvironmentVariable(name, buf, ARRAY_SIZE(buf)) == 0) {
+   if (GetEnvironmentVariableA(name, buf, ARRAY_SIZE(buf)) == 0) {
       return 0;
    }
    return atoi(buf);
@@ -21,7 +21,7 @@ Platform::GetConfigInt(const char* name)
 bool Platform::GetConfigBool(const char* name)
 {
    char buf[1024];
-   if (GetEnvironmentVariable(name, buf, ARRAY_SIZE(buf)) == 0) {
+   if (GetEnvironmentVariableA(name, buf, ARRAY_SIZE(buf)) == 0) {
       return false;
    }
    return atoi(buf) != 0 || _stricmp(buf, "true") == 0;

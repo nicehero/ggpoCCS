@@ -58,7 +58,7 @@ public:
 #  error Unsupported platform
 #endif
 
-#include "log.h"
+#include "ggpolog.h"
 
 /*
  * Macros

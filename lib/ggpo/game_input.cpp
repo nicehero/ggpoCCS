@@ -8,7 +8,7 @@
 #include "game_input.h"
 
 #include "types.h"
-#include "log.h"
+#include "ggpolog.h"
 
 void
 GameInput::init(int iframe, char *ibits, int isize, int offset)

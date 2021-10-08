@@ -10,27 +10,14 @@
 
 #include "../poll.h"
 #include "udp_msg.h"
-#include "ggponet.h"
+#include <ggponet.h>
+#include <GGPOCSMessage.hpp>
 #include "../ring_buffer.h"
 #include <nicenet/Service.h>
 #include <nicenet/Tcp.h>
 #include <string>
 #include <kfifo>
 
-struct GGPOCSMessage :
-	public nicehero::Serializable
-{
-public:
-	std::string fromPlayerID;
-	std::string playerID;
-	nicehero::Binary data;
-
-	ui32 getSize() const;
-
-	ui16 getID() const;
-	void serializeTo(nicehero::Message& msg) const;
-	void unserializeFrom(nicehero::Message& msg);
-};
 
 struct GGPOCSPlayerMsg
 {
@@ -68,10 +55,10 @@ public:
 
    void InitCS(const char* ip,uint16 port,const char* room, Poll *p, Callbacks *callbacks);
    
-   void SendTo(UdpMsg *buffer, int len, int flags,const std::string& fromPlayerID,const std::string& playerID, int destlen);
+   void SendTo(UdpMsg *buffer, int len, int flags, const std::string& fromPlayerID,const std::string& playerID, int destlen);
 
    virtual bool OnLoopPoll(void *cookie);
-
+   const std::string& getRoom();
 public:
    ~CS(void);
 	kfifo<GGPOCSPlayerMsg> m_receivedMsgs;

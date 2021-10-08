@@ -43,47 +43,12 @@ void CS::InitCS(const char* ip,uint16 port,const char* room, Poll *poll, Callbac
 	c->startRead();
 }
 
-inline ui32 GGPOCSMessage::getSize() const
-{
-	ui32 s = 0;
-	s += nicehero::Serializable::getSize(fromPlayerID);
-	s += nicehero::Serializable::getSize(playerID);
-	s += nicehero::Serializable::getSize(data);
-	return s;
-}
-inline nicehero::Message & operator << (nicehero::Message &m, const GGPOCSMessage& p)
-{
-	m << p.fromPlayerID;
-	m << p.playerID;
-	m << p.data;
-	return m;
-}
-
-inline nicehero::Message & operator >> (nicehero::Message &m, GGPOCSMessage& p)
-{
-	m >> p.fromPlayerID;
-	m >> p.playerID;
-	m >> p.data;
-	return m;
-}
-inline void GGPOCSMessage::serializeTo(nicehero::Message& msg) const
-{
-	msg << (*this);
-}
-
-inline void GGPOCSMessage::unserializeFrom(nicehero::Message& msg)
-{
-	msg >> (*this);
-}
-
-inline ui16 GGPOCSMessage::getID() const
-{
-	return GGPO_CS_MESSAGE_ID;
-}
 
 void CS::SendTo(UdpMsg *buffer, int len, int flags,const std::string& fromPlayerID,const std::string& playerID, int destlen)
 {
 	GGPOCSMessage msg;
+	msg.room = m_room;
+	msg.fromPlayerID = fromPlayerID;
 	msg.playerID = playerID;
 	msg.data = nicehero::Binary(ui32(len), buffer);
 	if (c){
@@ -101,6 +66,11 @@ bool CS::OnLoopPoll(void *cookie)
 	return true;
 }
 
+
+const std::string& CS::getRoom()
+{
+	return m_room;
+}
 
 void CS::Log(const char *fmt, ...)
 {
@@ -121,11 +91,20 @@ TCP_SESSION_COMMAND(GGPOCSClient, GGPO_CS_MESSAGE_ID)
 {
 	GGPOCSMessage d;
 	msg >> d;
+	CS* cs = dynamic_cast<GGPOCSClient&>(session).m_parent;
+	if (!cs)
+	{
+		return true;
+	}
+	if (cs->getRoom() != d.room)
+	{
+		return true;
+	}
 	GGPOCSPlayerMsg d2;
-	d2.playerID = d.playerID;
+	d2.playerID = d.fromPlayerID;
 	d2.m_size = d.data.m_Size;
 	memcpy(&d2.data,d.data.m_Data.get(),d.data.m_Size);
-	dynamic_cast<GGPOCSClient&>(session).m_parent->m_receivedMsgs.push(d2);
+	cs->m_receivedMsgs.push(d2);
 	return true;
 }
 

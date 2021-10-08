@@ -1,6 +1,6 @@
-cd vectorwar/build
+cd vectorwarCS/build
 cmake -G"MinGW Makefiles" ..
 make install
-cp VectorWar.exe ../..
+cp VectorWarCS.exe ../..
 cd ../..
 PAUSE

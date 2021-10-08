@@ -41,7 +41,7 @@
 #define GGPO_MAX_SPECTATORS              32
 
 #define GGPO_SPECTATOR_INPUT_INTERVAL     4
-#define GGPO_CS_MESSAGE_ID					48888
+
 typedef struct GGPOSession GGPOSession;
 
 typedef int GGPOPlayerHandle;

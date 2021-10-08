@@ -2,7 +2,7 @@
 #define _KFIFO______
 
 #include <vector>
-
+#include <atomic>
 #define KMIN(a, b)	((a) > (b) ? (b) : (a))
 
 static inline unsigned int roundup_power_of_two(unsigned int i)
@@ -48,12 +48,9 @@ public:
 	{
 		if ((size_ - writeIndex_ + readIndex_) < 1)
 			return false;
-
-		__sync_synchronize();
-
+		std::atomic_thread_fence(std::memory_order_seq_cst);
 		buffer_[writeIndex_ & (size_ - 1)] = elem;
-
-		__sync_synchronize();
+		std::atomic_thread_fence(std::memory_order_release); 
 		++writeIndex_;
 
 		return true;
@@ -63,11 +60,11 @@ public:
 		if ((writeIndex_ - readIndex_) < 1)
 			return false;
 
-		__sync_synchronize();
+		std::atomic_thread_fence(std::memory_order_seq_cst);
 
 		elem = buffer_[readIndex_ & (size_ - 1)];
 
-		__sync_synchronize();
+		std::atomic_thread_fence(std::memory_order_release); 
 		++readIndex_;
 
 		return true;

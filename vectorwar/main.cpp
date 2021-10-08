@@ -52,17 +52,17 @@ HWND
 CreateMainWindow(HINSTANCE hInstance)
 {
    HWND hwnd;
-   WNDCLASSEX wndclass = { 0 };
+   WNDCLASSEXW wndclass = { 0 };
    RECT rc;
    int width = 640, height = 480;
    WCHAR titlebuf[128];
 
-   wsprintf(titlebuf, L"(pid:%d) ggpo sdk sample: vector war", GetCurrentProcessId());
+   wsprintfW(titlebuf, L"(pid:%d) ggpo sdk sample: vector war", GetCurrentProcessId());
    wndclass.cbSize = sizeof(wndclass);
    wndclass.lpfnWndProc = MainWindowProc;
    wndclass.lpszClassName = L"vwwnd";
-   RegisterClassEx(&wndclass);
-   hwnd = CreateWindow(L"vwwnd",
+   RegisterClassExW(&wndclass);
+   hwnd = CreateWindowW(L"vwwnd",
                        titlebuf,
                        WS_OVERLAPPEDWINDOW | WS_VISIBLE,
                        CW_USEDEFAULT, CW_USEDEFAULT,
@@ -101,16 +101,16 @@ RunMainLoop(HWND hwnd)
 void
 Syntax()
 {
-   MessageBox(NULL, 
+   MessageBoxW(NULL, 
               L"Syntax:: vectorwar.exe <local port> <num players> ('local' | <remote ip>:<remote port>)*\n",
               L"Could not start", MB_OK);
 }
-     #include <fcntl.h>
-     #include <io.h>
+#include <fcntl.h>
+#include <io.h>
 int APIENTRY WinMain(_In_ HINSTANCE hInstance,
-    _In_opt_ HINSTANCE,
-    _In_ LPSTR,
-    _In_ int)
+	_In_opt_ HINSTANCE,
+	_In_ LPSTR,
+	_In_ int)
 {
    HWND hwnd = CreateMainWindow(hInstance);
    int offset = 1, local_player = 0;
@@ -163,7 +163,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
          if (!strcmp(arg, "local")) {
             players[i].type = GGPO_PLAYERTYPE_LOCAL;
             local_player = i;
-			MessageBox(NULL, 
+			MessageBoxW(NULL, 
               L"Local\n",
               L"Local", MB_OK);
 
