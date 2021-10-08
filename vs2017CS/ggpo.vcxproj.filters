@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ggpo">
+      <UniqueIdentifier>{f0348e8a-82e4-458f-8f72-6ef4faad0b00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nicenet">
+      <UniqueIdentifier>{e62192f7-27b0-41cb-bb3e-51e2364da5f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dep">
+      <UniqueIdentifier>{2e00f3d2-f43a-41a0-98d5-5945abc6d188}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lib\ggpo\backends\backend.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\backends\csbackend.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\backends\p2p.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\backends\spectator.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\backends\synctest.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\network\cs.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\network\cs_proto.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\network\udp.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\network\udp_msg.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\network\udp_proto.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\bitvector.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\game_input.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\input_queue.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\log.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\platform_linux.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\platform_windows.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\poll.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\ring_buffer.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\static_buffer.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\sync.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\timesync.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\types.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Clock.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Common.hpp">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\CopyablePtr.hpp">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\HttpParser.hpp">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\HttpServer.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Kcp.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Log.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Message.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Module.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\NoCopy.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Server.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Service.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nicenet\Tcp.h">
+      <Filter>nicenet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ggpo\ggpolog.h">
+      <Filter>ggpo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vectorwarCS\gamestate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vectorwarCS\gdi_renderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vectorwarCS\ggpo_perfmon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vectorwarCS\nongamestate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vectorwarCS\renderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vectorwarCS\Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vectorwarCS\targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vectorwarCS\vectorwar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\lib\ggpo\backends\csbackend.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\backends\p2p.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\backends\spectator.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\backends\synctest.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\network\cs.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\network\cs_proto.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\network\udp.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\network\udp_proto.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\bitvector.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\game_input.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\input_queue.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\platform_linux.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\platform_windows.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\poll.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\sync.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\timesync.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\Service.cpp">
+      <Filter>nicenet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\Tcp.cpp">
+      <Filter>nicenet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\Clock.cpp">
+      <Filter>nicenet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\HttpServer.cpp">
+      <Filter>nicenet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\Kcp.cpp">
+      <Filter>nicenet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\Log.cpp">
+      <Filter>nicenet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\Server.cpp">
+      <Filter>nicenet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\ggpolog.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ggpo\ggpo.cpp">
+      <Filter>ggpo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\dep\include\kcp\ikcp.c">
+      <Filter>dep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\dep\include\micro-ecc\uECC.c">
+      <Filter>dep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\nicenet\dep\include\tiny_sha3\sha3.c">
+      <Filter>dep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vectorwarCS\gamestate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vectorwarCS\gdi_renderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vectorwarCS\ggpo_perfmon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vectorwarCS\main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\vectorwarCS\vectorwar.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\vectorwar\small.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\vectorwar\VectorWar.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
