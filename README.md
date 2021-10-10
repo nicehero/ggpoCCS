@@ -1,24 +1,50 @@
-# ggpo
+# GGPO
+(简体中文版[这里](README.cn.md))
+####Introduction
 
-#### 介绍
-ggpo功能参见https://ggpo.net
+Ggpo network SDK was founded in 2009 and took the lead in using rollback network in point-to-point games. 
 
-跨平台ggpo支持分支，主要使其支持移动平台
+It is specifically designed to hide network delays in fast-paced, twitching games that require very precise input and frame perfect execution.
 
-并准备制作成一个支持ClientServer版本
+See for details https://ggpo.net
 
-#### 安装教程
+My forked version features:
 
-Android
-1.  CMake 3.18.1
-2.  NDK 20.1.5948944
-3.  设置环境变量 ANDROID_NDK_HOME
-4.  cd ndkBuild && build.bat
-5.  获得 libggpo.so
+Cross platform ggpo branch, mainly to support mobile platforms
 
-#### 使用说明
+Transform to a version that supports client server
 
-  先看ggpo自己的例子vectorwar:https://github.com/pond3r/ggpo
+####Installation tutorial
 
-  大概就是设置好多少player，设置好状态机保存，状态机加载，状态机下一帧等回调函数给ggpoSession并创建，然后正常跑状态机即可
+Android NDK so library creation
+
+1. CMake 3.18.1
+
+2. NDK 20.1.5948944
+
+3. Set the environment variable Android_ NDK_ HOME
+
+4. buildNDK.bat
+
+5. Get libggpo.so
+
+Simple test installation based on mingw-w64 Windows version:
+
+1. Install mingw-w64 8.1.0 arch: "x86_64",  Threads: "posix",  Exception: "seh"
+
+2. buildLibs.bat
+
+3. buildServer.bat
+
+4. buildTest.bat
+
+5. buildTestCS.bat
+
+6. Test P2P UDP version: test1.bat, test2.bat; Test CS version: ggposerver.exe, testcs1.bat, testcs2.bat
+
+####Instructions for use
+
+Simply put, it is to set the number of players, set the save,load,nextFrame,etcs for state machine to callback functions to ggposession and call the corresponding API to create, and then run the state machine normally
+
+See the example vectorwar for details
 
