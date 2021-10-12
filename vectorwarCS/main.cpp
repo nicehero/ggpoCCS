@@ -206,5 +206,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 	VectorWar_Exit();
 	WSACleanup();
 	DestroyWindow(hwnd);
+	nicehero::stop();
+	nicehero::joinMain();
 	return 0;
 }
