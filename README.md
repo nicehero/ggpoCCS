@@ -19,29 +19,37 @@ Transform to a version that supports client server
 
 Android NDK so library creation
 
-1. CMake 3.18.1
+1. CMake 3.18.1 / NDK 20.1.5948944 or CMake 3.21.3 + /NDK 23
 
-2. NDK 20.1.5948944
+2. mingw-w64 8.1.0 arch: "x86_64",  Threads: "posix",  Exception: "seh",rename "mingw32-make.exe" to "make.exe"
 
-3. Set the environment variable Android_ NDK_ HOME
+3. need "wget.exe","tar.exe" to environment PATH
 
-4. buildNDK.bat
+4. need "python" and set environment PATH
 
-5. Get libggpo.so
+5. Set the environment variable NDK_ROOT
+
+6. run buildNDK.bat
+
+7. Get libggpo.so and libnicenet.so
 
 Simple test installation based on mingw-w64 Windows version:
 
-1. Install mingw-w64 8.1.0 arch: "x86_64",  Threads: "posix",  Exception: "seh"
+1. Install mingw-w64 8.1.0 arch: "x86_64",  Threads: "posix",  Exception: "seh",rename "mingw32-make.exe" to "make.exe"
 
-2. buildLibs.bat
+2. need "wget.exe","tar.exe" to environment PATH
 
-3. buildServer.bat
+3. need "python" and set environment PATH
 
-4. buildTest.bat
+4. buildLibs.bat
 
-5. buildTestCS.bat
+5. buildServer.bat
 
-6. Test P2P UDP version: test1.bat, test2.bat; Test CS version: ggposerver.exe, testcs1.bat, testcs2.bat
+6. buildTest.bat
+
+7. buildTestCS.bat
+
+8. Test P2P UDP version: test1.bat, test2.bat; Test CS version: ggposerver.exe, testcs1.bat, testcs2.bat
 
 ####Instructions for use
 
