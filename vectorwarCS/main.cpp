@@ -229,9 +229,9 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 	}
 	if (r == GGPO_ERRORCODE_CS_CONNECT_FAILED)
 	{
+		VectorWar_Exit();
 		nicehero::stop();
 		Sleep(1000);
-		WSACleanup();
 		DestroyWindow(hwnd);
 		nicehero::joinMain();
 		return 0;
@@ -239,9 +239,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 	RunMainLoop(hwnd);
 	VectorWar_Exit();
 
-	WSACleanup();
 	DestroyWindow(hwnd);
 	nicehero::joinMain();
 	return 0;
 }
-

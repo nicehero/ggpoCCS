@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include <functional>
 #include <stdarg.h>
-
+#include <memory>
 // On windows, export at build time and import at runtime.
 // ELF systems don't need an explicit export/import.
 #ifdef _WIN32
@@ -613,7 +613,8 @@ GGPO_API void __cdecl ggpo_log(GGPOSession *,
 GGPO_API void __cdecl ggpo_logv(GGPOSession *,
                                 const char *fmt,
                                 va_list args);
-
+class GGPOCSClient;
+GGPO_API std::shared_ptr<GGPOCSClient> __cdecl ggpo_get_cs_client_obj(GGPOSession *session);
 
 
 #endif

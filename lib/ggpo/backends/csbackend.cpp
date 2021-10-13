@@ -609,6 +609,11 @@ bool CSBackend::isServerConnected()
 	return true;
 }
 
+std::shared_ptr<GGPOCSClient> CSBackend::getClientObj()
+{
+	return _cs.c;
+}
+
 void
 CSBackend::CheckInitialSync()
 {

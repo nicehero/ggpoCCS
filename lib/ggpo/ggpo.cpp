@@ -270,6 +270,16 @@ GGPOErrorCode ggpo_start_spectating(GGPOSession **session,
 	}
 }
 
+std::shared_ptr<GGPOCSClient> ggpo_get_cs_client_obj(GGPOSession *session)
+{
+	CSBackend* backend = dynamic_cast<CSBackend *>(session);
+	if (!backend)
+	{
+		return std::shared_ptr<GGPOCSClient>();
+	}
+	return backend->getClientObj();
+}
+
 GGPOErrorCode
 ggpo_start_cssession(GGPOSession **session,
                    GGPOSessionCallbacks *cb,

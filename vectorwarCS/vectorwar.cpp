@@ -228,11 +228,22 @@ VectorWar_Init(HWND hwnd, const std::string& playerID, const std::string& server
    result = ggpo_start_synctest(&ggpo, &cb, "vectorwar", num_players, sizeof(int), 1);
 #else
    result = ggpo_start_cssession(&ggpo, &cb, "vectorwar", num_players, sizeof(int),room.c_str(),playerID.c_str(),serverIP.c_str(),serverPort);
-#endif
    if (result == GGPO_ERRORCODE_CS_CONNECT_FAILED)
    {
-	   return result;
+	   int retryConnect = 0;
+		while (ggpo_start_cssession(
+			&ggpo, &cb, "vectorwar", num_players, sizeof(int), room.c_str(), playerID.c_str(), serverIP.c_str(), serverPort
+		) == GGPO_ERRORCODE_CS_CONNECT_FAILED) 
+		{
+			if (retryConnect > 4)
+			{
+				return result;
+			}
+			Sleep(100);
+			++retryConnect;
+		}
    }
+#endif
    // automatically disconnect clients after 3000 ms and start our count-down timer
    // for disconnects after 1000 ms.   To completely disable disconnects, simply use
    // a value of 0 for ggpo_set_disconnect_timeout.
@@ -260,9 +271,24 @@ VectorWar_Init(HWND hwnd, const std::string& playerID, const std::string& server
 
    ggpoutil_perfmon_init(hwnd);
    renderer->SetStatusText("Connecting to peers.");
+   //get cs client obj
+   auto client = ggpo_get_cs_client_obj(ggpo);
+   //send custom msg
+   if (client.get())
+   {
+	   ui32 dat[2] = { 32,0 };
+	   *(ui16*)(dat + 1) = 101;// msgID
+		nicehero::Message sendMsg(dat, 8);
+	   client->sendMessage(sendMsg);
+   }
    return result;
 }
 
+//recv custom msg
+TCP_SESSION_COMMAND(GGPOCSClient, 1234)
+{
+	return true;
+}
 /*
  * VectorWar_InitSpectator --
  *
