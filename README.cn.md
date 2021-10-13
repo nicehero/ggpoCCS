@@ -14,7 +14,7 @@ GGPO 网络 SDK 创建于 2009 年，率先在点对点游戏中使用回滚网�
 #### 安装教程
 
 Android NDK so 库创建
-1. "CMake 3.18.1" & "NDK 20" or "CMake 3.21.3+" & "NDK 23"
+1. "CMake 3.18.1" & "NDK 20" or "CMake 3.21.3" & "NDK 23"
 2. mingw-w64 8.1.0 arch: "x86_64",  Threads: "posix",  Exception: "seh",修改文件名 mingw32-make.exe为make.exe
 3. 安装python放到环境变量 PATH 目录中
 4. 需要 wget.exe,tar.exe 放到环境变量 PATH 目录中

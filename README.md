@@ -19,7 +19,7 @@ Transform to a version that supports client server
 
 Android NDK so library creation
 
-1. CMake 3.18.1 / NDK 20.1.5948944 or CMake 3.21.3 + /NDK 23
+1. "CMake 3.18.1" & "NDK 20" or "CMake 3.21.3" & "NDK 23"
 
 2. mingw-w64 8.1.0 arch: "x86_64",  Threads: "posix",  Exception: "seh",rename "mingw32-make.exe" to "make.exe"
 
