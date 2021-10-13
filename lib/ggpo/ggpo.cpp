@@ -282,7 +282,14 @@ ggpo_start_cssession(GGPOSession **session,
 				   unsigned short serverPort)
 {
 	try {
-	   *session= (GGPOSession *)new CSBackend(cb,game,room,playerID,serverIP,serverPort,num_players,input_size);
+		CSBackend* backend = new CSBackend(cb, game, room, playerID, serverIP, serverPort, num_players, input_size);
+		if (!backend->isServerConnected())
+		{
+			delete backend;
+			*session = nullptr;
+			return GGPO_ERRORCODE_CS_CONNECT_FAILED;
+		}
+		*session = (GGPOSession *)backend;
 	   return GGPO_OK;
 	} catch (const GGPOException& e) {
 	   Log("GGPOException in ggpo_start_session: %s", e.what());

@@ -600,6 +600,15 @@ CSBackend::OnMsg(const std::string& from, UdpMsg *msg, int len)
    }
 }
 
+bool CSBackend::isServerConnected()
+{
+	if (!_cs.c.get() || _cs.c->m_isInit != true)
+	{
+		return false;
+	}
+	return true;
+}
+
 void
 CSBackend::CheckInitialSync()
 {

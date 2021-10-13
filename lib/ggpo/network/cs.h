@@ -11,6 +11,7 @@
 #include "../poll.h"
 #include "udp_msg.h"
 #include <ggponet.h>
+#include <GGPOCSClient.h>
 #include <GGPOCSMessage.hpp>
 #include "../ring_buffer.h"
 #include <nicenet/Service.h>
@@ -24,13 +25,6 @@ struct GGPOCSPlayerMsg
 	std::string playerID;
 	ui32 m_size;
 	UdpMsg data;
-};
-class CS;
-class GGPOCSClient :public nicehero::TcpSessionC
-{
-public:
-	virtual void close();
-	CS* m_parent;
 };
 class CS : public IPollSink
 {

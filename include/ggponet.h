@@ -115,7 +115,8 @@ typedef struct GGPOLocalEndpoint {
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_TOO_MANY_SPECTATORS,   10)    \
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_INVALID_REQUEST,       11)    \
    GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_INPUT_SIZE_DIFF,       12)	 \
-   GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_CS_FIFO_FULL,          13)    
+   GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_CS_FIFO_FULL,          13)    \
+GGPO_ERRORLIST_ENTRY(GGPO_ERRORCODE_CS_CONNECT_FAILED, 14)
 
 #define GGPO_ERRORLIST_ENTRY(name, value)       name = value,
 typedef enum {
@@ -612,6 +613,7 @@ GGPO_API void __cdecl ggpo_log(GGPOSession *,
 GGPO_API void __cdecl ggpo_logv(GGPOSession *,
                                 const char *fmt,
                                 va_list args);
+
 
 
 #endif

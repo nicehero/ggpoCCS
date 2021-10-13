@@ -35,7 +35,7 @@ public:
 
 public:
    virtual void OnMsg(const std::string& from, UdpMsg *msg, int len);
-
+   bool isServerConnected();
 protected:
    GGPOErrorCode PlayerHandleToQueue(GGPOPlayerHandle player, int *queue);
    GGPOPlayerHandle QueueToPlayerHandle(int queue) { return (GGPOPlayerHandle)(queue + 1); }

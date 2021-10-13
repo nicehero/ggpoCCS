@@ -87,7 +87,9 @@ RunMainLoop(HWND hwnd)
          TranslateMessage(&msg); 
          DispatchMessage(&msg);
          if (msg.message == WM_QUIT) {
-            return;
+			 nicehero::stop();
+			 Sleep(1000);
+			 return;
          }
       }
       now = timeGetTime();
@@ -108,6 +110,24 @@ Syntax()
 }
 #include <fcntl.h>
 #include <io.h>
+
+static BOOL WINAPI handleWin32Console(DWORD event)
+{
+	switch (event)
+	{
+	case CTRL_CLOSE_EVENT:
+	case CTRL_C_EVENT:
+	{
+		printf("handle end\n");
+		nicehero::stop();
+	}
+
+	return TRUE;
+	}
+	return FALSE;
+}
+
+
 int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE,
 	_In_ LPSTR,
@@ -115,10 +135,12 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 {
 	HWND hwnd = CreateMainWindow(hInstance);
 	int offset = 1, local_player = 0;
+	/*
 	WSADATA wd = { 0 };
 	wchar_t wide_ip_buffer[128];
 	unsigned int wide_ip_buffer_size = (unsigned int)ARRAYSIZE(wide_ip_buffer);
 	WSAStartup(MAKEWORD(2, 2), &wd);
+	*/
 	POINT window_offsets[] = {
 		{ 64,  64 },   // player 1
 		{ 740, 64 },   // player 2
@@ -126,6 +148,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 		{ 740, 600 },  // player 4
 	};
 	nicehero::start(true);
+
 #if defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
@@ -157,7 +180,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 		Syntax();
 		return 1;
 	}
-
+	GGPOErrorCode r = GGPO_OK;
 	if (strcmp(__argv[offset], "spectate") == 0) {
 		char host_ip[128];
 		unsigned short host_port;
@@ -180,15 +203,12 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 				players[i].type = GGPO_PLAYERTYPE_LOCAL;
 				strcpy(players[i].u.csremote.playerID, playerID.c_str());
 				local_player = i;
-				MessageBoxW(NULL,L"Local\n",L"Local", MB_OK);
 				continue;
 			}
 
 			players[i].type = GGPO_PLAYERTYPE_REMOTE;
 			strcpy(players[i].u.csremote.playerID, arg);
-			MessageBoxA(NULL,players[i].u.csremote.playerID,"REMOTE", MB_OK);
 		}
-
 		// these are spectators...
 		int num_spectators = 0;
 		while (offset < __argc) {
@@ -200,13 +220,28 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 		if (local_player < sizeof(window_offsets) / sizeof(window_offsets[0])) {
 			::SetWindowPos(hwnd, NULL, window_offsets[local_player].x, window_offsets[local_player].y, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 		}
-		VectorWar_Init(hwnd, playerID,serverIP,serverPort,room, num_players, players, num_spectators);
+		r = VectorWar_Init(hwnd, playerID,serverIP,serverPort,room, num_players, players, num_spectators);
+		if (r == GGPO_ERRORCODE_CS_CONNECT_FAILED) {
+			MessageBoxW(NULL,
+				L"Connect ggpo server failed",
+				L"Connect ggpo server failed", MB_OK);
+		}
+	}
+	if (r == GGPO_ERRORCODE_CS_CONNECT_FAILED)
+	{
+		nicehero::stop();
+		Sleep(1000);
+		WSACleanup();
+		DestroyWindow(hwnd);
+		nicehero::joinMain();
+		return 0;
 	}
 	RunMainLoop(hwnd);
 	VectorWar_Exit();
+
 	WSACleanup();
 	DestroyWindow(hwnd);
-	nicehero::stop();
 	nicehero::joinMain();
 	return 0;
 }
+

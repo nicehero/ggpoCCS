@@ -204,7 +204,7 @@ vw_free_buffer(void *buffer)
  * Initialize the vector war game.  This initializes the game state and
  * the video renderer and creates a new network session.
  */
-void
+GGPOErrorCode
 VectorWar_Init(HWND hwnd, const std::string& playerID, const std::string& serverIP, unsigned short serverPort, const std::string& room, int num_players, GGPOPlayer *players, int num_spectators)
 {
    GGPOErrorCode result;
@@ -229,7 +229,10 @@ VectorWar_Init(HWND hwnd, const std::string& playerID, const std::string& server
 #else
    result = ggpo_start_cssession(&ggpo, &cb, "vectorwar", num_players, sizeof(int),room.c_str(),playerID.c_str(),serverIP.c_str(),serverPort);
 #endif
-
+   if (result == GGPO_ERRORCODE_CS_CONNECT_FAILED)
+   {
+	   return result;
+   }
    // automatically disconnect clients after 3000 ms and start our count-down timer
    // for disconnects after 1000 ms.   To completely disable disconnects, simply use
    // a value of 0 for ggpo_set_disconnect_timeout.
@@ -240,6 +243,9 @@ VectorWar_Init(HWND hwnd, const std::string& playerID, const std::string& server
    for (i = 0; i < num_players + num_spectators; i++) {
       GGPOPlayerHandle handle;
       result = ggpo_add_player(ggpo, players + i, &handle);
+	  if (result != 0) {
+		  return result;
+	  }
       ngs.players[i].handle = handle;
       ngs.players[i].type = players[i].type;
       if (players[i].type == GGPO_PLAYERTYPE_LOCAL) {
@@ -254,6 +260,7 @@ VectorWar_Init(HWND hwnd, const std::string& playerID, const std::string& server
 
    ggpoutil_perfmon_init(hwnd);
    renderer->SetStatusText("Connecting to peers.");
+   return result;
 }
 
 /*

@@ -23,7 +23,7 @@
     <ProjectGuid>{8BF339A8-2267-437F-87EE-24DD8DB98D43}</ProjectGuid>
     <RootNamespace>ggpo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
-    <ProjectName>ggpoCS</ProjectName>
+    <ProjectName>VectorWarCS</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
