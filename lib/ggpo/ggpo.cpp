@@ -312,6 +312,12 @@ ggpo_start_cssession(GGPOSession **session,
 #include <windows.h>
 #endif
 extern "C"{
+	
+	int unity_add_test(int x,int y)
+	{
+		return x + y;
+	}
+	
 	GGPOSession* g_ggpo = nullptr;
 	std::string g_playerID;
 	void unity_ggpo_start(){

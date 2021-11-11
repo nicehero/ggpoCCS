@@ -99,7 +99,7 @@ if(WIN32)
 endif()
 
 if(ANDROID)
-	target_link_libraries(ggpo PUBLIC nicenet stdc++)
+	target_link_libraries(ggpo PUBLIC nicenet)
 endif()
 
 target_include_directories(ggpo PUBLIC
