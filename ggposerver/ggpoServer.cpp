@@ -77,12 +77,12 @@ int main(int argc, char* argv[])
 TCP_SESSION_COMMAND(MyClient, GGPO_CS_MESSAGE_ID)
 {
 	GGPOCSMessage d;
-	msg >> d;
+	*msg >> d;
 	if (d.fromPlayerID == "")
 	{
 		return true;
 	}
-	MyClient* c = dynamic_cast<MyClient*>(&session);
+	MyClient* c = dynamic_cast<MyClient*>(session.get());
 	if (!c)
 	{
 		return true;
