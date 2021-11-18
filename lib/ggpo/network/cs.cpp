@@ -90,8 +90,8 @@ void CS::Log(const char *fmt, ...)
 TCP_SESSION_COMMAND(GGPOCSClient, GGPO_CS_MESSAGE_ID)
 {
 	GGPOCSMessage d;
-	msg >> d;
-	CS* cs = dynamic_cast<GGPOCSClient&>(session).m_parent;
+	*msg >> d;
+	CS* cs = dynamic_cast<GGPOCSClient&>(*session.get()).m_parent;
 	if (!cs)
 	{
 		return true;
